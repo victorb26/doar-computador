@@ -1,5 +1,9 @@
-import app from './server';
+import express from 'express';
 
-app.listen(3000, () => 
-console.log('Servidor iniciado na porta 3000')
+const app = express();
+
+app.get('/', (req, res) => 
+res.status(200).json({alive:true})
 );
+
+export default app;
