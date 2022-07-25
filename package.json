@@ -1,5 +1,24 @@
 {
   "dependencies": {
     "express": "^4.18.1"
-  }
+  },
+  "name": "app-master",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/victorb26/doar-computador.git"
+  },
+  "author": "Victor Barros",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/victorb26/doar-computador/issues"
+  },
+  "homepage": "https://github.com/victorb26/doar-computador#readme"
 }
