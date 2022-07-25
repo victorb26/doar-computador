@@ -8,7 +8,8 @@ console.log('Servidor iniciado na porta 3000')
 
 app.get('/', (req, res) => 
 res.json({
-    "Status":200,
+    status:200,
     alive:true
 })
 );
+
