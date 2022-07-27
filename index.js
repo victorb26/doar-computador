@@ -1,9 +1,7 @@
-import express from 'express';
+import express from "express";
 
 const app = express();
 
-app.get('/', (req, res) => 
-res.status(200).json({alive:true})
-);
+app.get("/", (req, res) => res.status(200).json({ alive: true }));
 
 export default app;
