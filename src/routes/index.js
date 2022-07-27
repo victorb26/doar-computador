@@ -1,7 +1,14 @@
 import express from "express";
 
-const app = express();
+const  routes = app => {
 
 app.get("/", (req, res) => res.status(200).json({ alive: true }));
 
-export default app;
+app.use(
+    express.json(),
+    donates
+    
+)
+} 
+
+export default routes;
