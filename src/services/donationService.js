@@ -21,7 +21,7 @@ export default  class DonationService{
             };
             const response = await new Donate(newDonate).save();
         }catch (error){
-            
+            console.log(error)
         }
     }
 };
