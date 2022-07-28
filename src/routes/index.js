@@ -1,14 +1,11 @@
 import express from "express";
 
-let data = [];
 
-const app = express();
 
-const routes = app =>{
-app.use(express.json());
-
-app.get("/", (req, res) => res.status(200).json({ alive: true }));
-}
+const routes = (app) => {
+  app.use(express.json());
+  app.get("/", (req, res) => res.status(200).json({ alive: true }));
+};
 
 /*app.post("/donation", (req, res) => {
   const {
