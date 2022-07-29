@@ -1,11 +1,14 @@
 import express from "express";
+import donate from './donationRoute.js';
 
 
 
 const routes = (app) => {
-  app.use(express.json());
-  app.get("/", (req, res) => res.status(200).json({ alive: true }));
-};
+  
+  app.route('/').get((req, res) => { res.status(200).json({ alive: true });
+});
 
+app.use(express.json(),donate);
 
+}
 export default routes;
