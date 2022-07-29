@@ -1,31 +1,19 @@
-import donationSchema from"../models/donationModel.js";
+import Donate from "../models/donationModel.js";
+import db from "../infra/db.js";
 
+const donationController = (app) => {
+  app.get("/", (req, res) => {
+    res.status(200).json({ alive: true });
+  });
 
-export default class DonateController{
-  static async insertDonate (req, res) {
-    const body =  req.body;
-    if (!Object.keys(body).length > 1) {
-      return res.status(400).json({ error: "error" });
-    }
-    const donate = new donationSchema(
-      body.name, 
-      body.email, 
-      // body.phone, 
-      // body.zip, 
-      // body.city, 
-      // body.state, 
-      // body.streetAddress, 
-      // body.number, 
-      // body.complement, 
-      // body.neighborhood, 
-      // body.deviceCount, 
-      // body.devices
-    )
-    try {
-      res.status(200).json({success:true});
-    } 
-    catch (error) {
-      return res.status(500).json({ error: error });
-    }
-  };
+  app.post("/donation", (req, res) => {
+    res.status(200);
+    const body = req.body;
+    console.log(body);
+    const donate = new Donate(body.nome, body.email, body.senha);
+    db.donate.push(donate);
+    res.json({ "Produto cadastrado": donate });
+  });
 };
+
+export default donationController;
