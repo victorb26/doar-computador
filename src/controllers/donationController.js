@@ -9,17 +9,11 @@ const donationController = (app) => {
   });
 
   app.post("/donation",
-  body("email").isEmail().normalizeEmail(),
+  [body("email").isEmail().normalizeEmail(),
   body("phone").isLength({min:10, max:11}),//10 para número fixo e 11 para celulares
   body("zip").isLength(8),
-  body("number").isNumeric(),
   body("deviceCount").isNumeric(),
-  body("devices").isIn()
-
-
-
-
-  (req, res) => {
+  body("devices")], (req, res) => {
     res.status(200);
 
     const body = req.body;
