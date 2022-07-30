@@ -201,17 +201,30 @@ const donationController = (app) => {
     (req, res) => {
       const body = req.body;
       const errors = validationResult(req);
+      const donateTypes = ["notebook","desktop","netbook","screen","printer","scanner",];
+
       if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
       }
       if (body.devices.length !== body.deviceCount) {
-        res.status(400).send({
+        res.status(400).json({
           error: true,
           errorMessage: `A quantidade de equipamentos (${body.deviceCount}) não está de acordo com as informações de equipamentos enviados (${body.devices.length})`,
         });
         return;
       }
-
+      for (let j = 0; j < body.devices.length; j++) {
+        const verifyType = donateTypes.find((current) => {
+          return current == body.devices[j].type;
+        });
+        if (!verifyType) {
+          res.status(400).json({
+            error: true,
+            errorMessage: `O tipo de equipamento (${body.devices[j].type}) é invalido`,
+          });
+          return;
+        }
+      }
       res.status(200).json({ sucess: true });
     }
   );
