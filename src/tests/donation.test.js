@@ -122,5 +122,29 @@ describe("POST /users test", () => {
       .expect(400);
   });
 
+  it('Should return Status(200) and body {success:true}', () => {
+    const data = {
+      name: "Victor",
+      email: "email@email.com",
+      phone: "21982293270",
+      zip: "23230230",
+      city: "Polis",
+      state: "PL",
+      streetAddress: "Polis",
+      number: "23",
+      complement: "Fundos",
+      neighborhood: "Polis",
+      deviceCount: 2,
+      devices: [{ type: "scanner", condition: "working" },
+      { type: "notebook", condition: "notWorking" }],
+    };
+
+    request(app)
+      .post("/donation")
+      .send(data)
+      .expect({sucess:true})
+      .expect(200);
+  });
+
 
 });
