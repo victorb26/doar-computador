@@ -69,7 +69,7 @@ describe("POST /users test", () => {
       .send(data)
       .expect({
         error: true,
-        requiredFields: [devices],
+        requiredFields: ["devices"],
         errorMessage: "Todos os campos obrigatórios devem ser informados",
       })
       .expect(400);
