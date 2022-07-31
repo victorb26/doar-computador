@@ -74,4 +74,29 @@ describe("POST /users test", () => {
       })
       .expect(400);
   });
+  it('Should return Status(400) and body {error:true, errorMessage: "A quantidade de equipamentos (2) não está de acordo com as informações de equipamentos enviados (1)"}', () => {
+    const data = {
+      name: "Victor",
+      email: "email@email.com",
+      phone: "21982293270",
+      zip: "23230230",
+      city: "Polis",
+      state: "PL",
+      streetAddress: "Polis",
+      number: "23",
+      complement: "Fundos",
+      neighborhood: "Polis",
+      deviceCount: 1,
+      devices: [{ type: "notebook", condition: "working" },
+      { type: "notebook", condition: "notWorking" }],
+    };
+
+    request(app)
+      .post("/donation")
+      .send(data)
+      .expect({error:true, errorMessage: "A quantidade de equipamentos (2) não está de acordo com as informações de equipamentos enviados (1)"})
+      .expect(400);
+  });
+
+
 });
