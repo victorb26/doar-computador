@@ -98,5 +98,29 @@ describe("POST /users test", () => {
       .expect(400);
   });
 
+  it('Should return Status(400) and body and body {error:true, errorMessage:"O tipo de equipamento (celular) é invalido"}', () => {
+    const data = {
+      name: "Victor",
+      email: "email@email.com",
+      phone: "21982293270",
+      zip: "23230230",
+      city: "Polis",
+      state: "PL",
+      streetAddress: "Polis",
+      number: "23",
+      complement: "Fundos",
+      neighborhood: "Polis",
+      deviceCount: 2,
+      devices: [{ type: "celular", condition: "working" },
+      { type: "notebook", condition: "notWorking" }],
+    };
+
+    request(app)
+      .post("/donation")
+      .send(data)
+      .expect({error:true, errorMessage: "O tipo de equipamento (celular) é invalido"})
+      .expect(400);
+  });
+
 
 });
