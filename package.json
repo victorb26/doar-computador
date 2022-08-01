@@ -8,7 +8,7 @@
   "name": "app-master",
   "description": "",
   "version": "1.0.0",
-  "main": "server.js",
+  "main": "app.js",
   "devDependencies": {
     "jest": "^28.1.3",
     "nodemon": "^2.0.19",
